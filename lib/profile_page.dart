@@ -94,7 +94,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Task Date:', style: TextStyle(fontSize: 16)),
+                    Transform.translate(
+                      offset: const Offset(0, 15),
+                      child: Text('Task Date:', style: TextStyle(fontSize: 16)),
+                    ),
                     Row(
                       children: [
                         Expanded(
@@ -112,9 +115,12 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     if (selectedDate == null)
-                      const Text(
-                        'Please select a date',
-                        style: TextStyle(color: Colors.red, fontSize: 13),
+                      Transform.translate(
+                        offset: Offset(0, -10),
+                        child: Text(
+                          'Please select a date',
+                          style: TextStyle(color: Colors.red, fontSize: 13),
+                        ),
                       ),
 
                     const SizedBox(height: 10),
