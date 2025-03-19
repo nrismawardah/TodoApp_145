@@ -22,11 +22,13 @@ class _ProfilePageState extends State<ProfilePage> {
   DateTime? selectedDate;
 
   void addData() {
-    if (key.currentState!.validate() && selectedDate != null) {
+    if (key.currentState!.validate()) {
+      if (selectedDate == null) {
+        setState(() {});
+        return;
+      }
       setState(() {
-        daftarTugas.add(
-          Tugas(tugas: tugasController.text, deadline: selectedDate!),
-        );
+        daftarTugas.add(Tugas(tugas: tugasController.text, deadline: selectedDate!));
         tugasController.clear();
         selectedDate = null;
       });
@@ -107,6 +109,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
                       ],
                     ),
+                    if (selectedDate == null)
+                          const Text(
+                            'Please select a date',
+                            style: TextStyle(color: Colors.red, fontSize: 13),
+                          ),
+                          
                     const SizedBox(height: 10),
                     Row(
                       children: [
