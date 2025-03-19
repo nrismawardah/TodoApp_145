@@ -7,6 +7,14 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
+class Tugas {
+  String tugas;
+  DateTime deadline;
+  bool status;
+
+  Tugas({required this.tugas, required this.deadline, required this.status});
+}
+
 class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController tugasController = TextEditingController();
   final key = GlobalKey<FormState>();
