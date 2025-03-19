@@ -34,7 +34,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     radius: 25,
                     backgroundImage: AssetImage('assets/images/1.jpeg'),
                   ),
-                  Text('Loopy', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  Text(
+                    'Loopy',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               Padding(
@@ -50,14 +53,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         controller: nameController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return 'Nama masih kosong';
+                            return 'Tugas masih kosong';
                           }
                           return null;
                         },
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
-                          label: Text('Nama Pendaftar'),
-                          hintText: 'Masukkan nama lengkap',
+                          label: Text('Tugas'),
+                          hintText: 'Masukkan tugas',
                         ),
                       ),
                     ),
