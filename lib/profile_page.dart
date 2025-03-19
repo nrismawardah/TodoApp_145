@@ -8,13 +8,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController tugasController = TextEditingController();
   final key = GlobalKey<FormState>();
-  List<String> daftarNama = [];
+  List<String> daftarTugas = [];
 
   void addData() {
     setState(() {
-      daftarNama.add(nameController.text);
+      daftarTugas.add(tugasController.text);
     });
   }
 
@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        controller: nameController,
+                        controller: tugasController,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Tugas masih kosong';
@@ -77,10 +77,10 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Expanded(
                 child:
-                    (daftarNama.isEmpty)
-                        ? Center(child: Text('Data kosong'))
+                    (daftarTugas.isEmpty)
+                        ? Center(child: Text('Tugas kosong'))
                         : ListView.builder(
-                          itemCount: daftarNama.length,
+                          itemCount: daftarTugas.length,
                           itemBuilder: (context, index) {
                             return Container(
                               margin: const EdgeInsets.all(5),
@@ -91,7 +91,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Text(daftarNama[index])],
+                                children: [Text(daftarTugas[index])],
                               ),
                             );
                           },
