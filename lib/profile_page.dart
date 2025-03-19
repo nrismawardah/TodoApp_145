@@ -140,9 +140,13 @@ class _ProfilePageState extends State<ProfilePage> {
                             decoration: InputDecoration(
                               label: Text('Task'),
                               hintText: 'Enter your task',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
                             ),
                           ),
                         ),
+                        SizedBox(width: 10),
                         OutlinedButton(
                           onPressed: () {
                             if (key.currentState!.validate()) {
