@@ -162,7 +162,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: ListTile(
                                 title: Text(
                                   tugas.tugas,
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                                 ),
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
