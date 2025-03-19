@@ -12,19 +12,24 @@ class Tugas {
   DateTime deadline;
   bool status;
 
-  Tugas({required this.tugas, required this.deadline, required this.status});
+  Tugas({required this.tugas, required this.deadline, this.status = false});
 }
 
 class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController tugasController = TextEditingController();
   final key = GlobalKey<FormState>();
-  List<String> daftarTugas = [];
+  List<Tugas> daftarTugas = [];
   DateTime? selectedDate;
 
   void addData() {
-    setState(() {
-      daftarTugas.add(tugasController.text);
-    });
+    if (key.currentState!.validate() && selectedDate != null) {
+      setState(() {
+        daftarTugas.add(
+          Tugas(tugas: tugasController.text, deadline: selectedDate!));
+        tugasController.clear();
+        selectedDate = null;
+      });
+    }
   }
 
   @override
