@@ -28,7 +28,9 @@ class _ProfilePageState extends State<ProfilePage> {
         return;
       }
       setState(() {
-        daftarTugas.add(Tugas(tugas: tugasController.text, deadline: selectedDate!));
+        daftarTugas.add(
+          Tugas(tugas: tugasController.text, deadline: selectedDate!),
+        );
         tugasController.clear();
         selectedDate = null;
       });
@@ -110,11 +112,11 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     if (selectedDate == null)
-                          const Text(
-                            'Please select a date',
-                            style: TextStyle(color: Colors.red, fontSize: 13),
-                          ),
-                          
+                      const Text(
+                        'Please select a date',
+                        style: TextStyle(color: Colors.red, fontSize: 13),
+                      ),
+
                     const SizedBox(height: 10),
                     Row(
                       children: [
@@ -149,7 +151,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ),
               SizedBox(height: 10),
-              Text('Task List', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text(
+                'Task List',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
               Expanded(
                 child:
                     (daftarTugas.isEmpty)
@@ -162,7 +167,10 @@ class _ProfilePageState extends State<ProfilePage> {
                               child: ListTile(
                                 title: Text(
                                   tugas.tugas,
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18,
+                                  ),
                                 ),
                                 subtitle: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,13 +190,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                                 trailing: Checkbox(
-                                value: tugas.status,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    tugas.status = value ?? false;
-                                  });
-                                },
-                              ),
+                                  value: tugas.status,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      tugas.status = value ?? false;
+                                    });
+                                  },
+                                ),
                               ),
                             );
                           },
