@@ -123,15 +123,15 @@ class _ProfilePageState extends State<ProfilePage> {
                             controller: tugasController,
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return 'Tugas masih kosong';
+                                return 'Please enter some text';
                               }
                               return null;
                             },
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
-                              label: Text('Tugas'),
-                              hintText: 'Masukkan tugas',
+                              label: Text('Task'),
+                              hintText: 'Enter your task',
                             ),
                           ),
                         ),
