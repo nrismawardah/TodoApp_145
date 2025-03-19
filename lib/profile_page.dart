@@ -87,22 +87,39 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Form(
                 key: key,
-                child: Row(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(
-                      child: TextFormField(
-                        controller: tugasController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Tugas masih kosong';
-                          }
-                          return null;
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        decoration: InputDecoration(
-                          label: Text('Tugas'),
-                          hintText: 'Masukkan tugas',
+                    const Text('Task Date:', style: TextStyle(fontSize: 16)),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            selectedDate == null
+                                ? 'Select a Date'
+                                : '${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}-${selectedDate!.hour}-${selectedDate!.minute}',
+                            style: TextStyle(fontSize: 16),
+                          ),
                         ),
+                        IconButton(
+                          icon: const Icon(Icons.calendar_today),
+                          onPressed: () => selectDate(context),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      controller: tugasController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Tugas masih kosong';
+                        }
+                        return null;
+                      },
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      decoration: InputDecoration(
+                        label: Text('Tugas'),
+                        hintText: 'Masukkan tugas',
                       ),
                     ),
                     OutlinedButton(
