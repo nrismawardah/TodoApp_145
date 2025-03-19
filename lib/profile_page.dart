@@ -25,7 +25,8 @@ class _ProfilePageState extends State<ProfilePage> {
     if (key.currentState!.validate() && selectedDate != null) {
       setState(() {
         daftarTugas.add(
-          Tugas(tugas: tugasController.text, deadline: selectedDate!));
+          Tugas(tugas: tugasController.text, deadline: selectedDate!),
+        );
         tugasController.clear();
         selectedDate = null;
       });
@@ -46,7 +47,13 @@ class _ProfilePageState extends State<ProfilePage> {
       );
       if (pickedTime != null) {
         setState(() {
-          selectedDate = DateTime(pickedDate.year, pickedDate.month, pickedDate.day, pickedTime.hour, pickedTime.minute);
+          selectedDate = DateTime(
+            pickedDate.year,
+            pickedDate.month,
+            pickedDate.day,
+            pickedTime.hour,
+            pickedTime.minute,
+          );
         });
       }
     }
@@ -116,16 +123,30 @@ class _ProfilePageState extends State<ProfilePage> {
                         : ListView.builder(
                           itemCount: daftarTugas.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.all(5),
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 255, 207, 238),
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Text(daftarTugas[index])],
+                            final tugas = daftarTugas[index];
+                            return Card(
+                              child: ListTile(
+                                title: Text(
+                                  tugas.tugas,
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Deadline: ${tugas.deadline.day}-${tugas.deadline.month}-${tugas.deadline.year} ${tugas.deadline.hour}:${tugas.deadline.minute}',
+                                    ),
+                                    Text(
+                                      tugas.status ? 'Done' : 'Not Done',
+                                      style: TextStyle(
+                                        color:
+                                            tugas.status
+                                                ? Colors.green
+                                                : Colors.red,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
