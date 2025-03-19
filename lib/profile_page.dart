@@ -19,6 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController tugasController = TextEditingController();
   final key = GlobalKey<FormState>();
   List<String> daftarTugas = [];
+  DateTime? selectedDate;
 
   void addData() {
     setState(() {
