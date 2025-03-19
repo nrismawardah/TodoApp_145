@@ -31,11 +31,15 @@ class _ProfilePageState extends State<ProfilePage> {
                 spacing: 15,
                 children: [
                   CircleAvatar(
-                    radius: 30,
+                    radius: 25,
                     backgroundImage: AssetImage('assets/images/1.jpeg'),
                   ),
-                  Text('Loopy', style: TextStyle(fontSize: 20)),
+                  Text('Loopy', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ],
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Text('Form Page', style: TextStyle(fontSize: 20)),
               ),
               Form(
                 key: key,
