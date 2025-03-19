@@ -181,6 +181,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                   ],
                                 ),
+                                trailing: Checkbox(
+                                value: tugas.status,
+                                onChanged: (bool? value) {
+                                  setState(() {
+                                    tugas.status = value ?? false;
+                                  });
+                                },
+                              ),
                               ),
                             );
                           },
