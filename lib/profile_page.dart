@@ -108,27 +108,34 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                     const SizedBox(height: 10),
-                    TextFormField(
-                      controller: tugasController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Tugas masih kosong';
-                        }
-                        return null;
-                      },
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      decoration: InputDecoration(
-                        label: Text('Tugas'),
-                        hintText: 'Masukkan tugas',
-                      ),
-                    ),
-                    OutlinedButton(
-                      onPressed: () {
-                        if (key.currentState!.validate()) {
-                          addData();
-                        }
-                      },
-                      child: Text('Submit'),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: TextFormField(
+                            controller: tugasController,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Tugas masih kosong';
+                              }
+                              return null;
+                            },
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            decoration: InputDecoration(
+                              label: Text('Tugas'),
+                              hintText: 'Masukkan tugas',
+                            ),
+                          ),
+                        ),
+                        OutlinedButton(
+                          onPressed: () {
+                            if (key.currentState!.validate()) {
+                              addData();
+                            }
+                          },
+                          child: Text('Submit'),
+                        ),
+                      ],
                     ),
                   ],
                 ),
